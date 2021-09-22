@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { auth } from '../../firebase';
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 
 const Signup = () => {
   const [email, setEmail] = useState('');
@@ -9,7 +8,7 @@ const Signup = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     const config = {
-      url: 'http://localhost:3000/signup/complete',
+      url: import.meta.env.VITE_REGISTER_REDIRECT_URL,
       handleCodeInApp: true,
     };
 
@@ -45,7 +44,7 @@ const Signup = () => {
       <div className='row'>
         <div className='col-md-6 offset-md-3'>
           <h4>Sign up</h4>
-          <ToastContainer />
+
           {registerForm()}
         </div>
       </div>

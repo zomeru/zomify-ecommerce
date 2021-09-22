@@ -4,11 +4,14 @@ import Login from './pages/auth/Login';
 import Signup from './pages/auth/Signup';
 import Home from './pages/Home';
 import Header from './components/nav/Header';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
   return (
     <>
       <Header />
+      <ToastContainer />
       <Switch>
         <Route exact path='/' component={Home} />
         <Route path='/login' component={Login} />
