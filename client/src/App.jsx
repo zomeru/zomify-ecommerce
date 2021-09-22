@@ -4,6 +4,7 @@ import Login from './pages/auth/Login';
 import Signup from './pages/auth/Signup';
 import Home from './pages/Home';
 import Header from './components/nav/Header';
+import SignupComplete from './pages/auth/SignupComplete';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -14,8 +15,9 @@ const App = () => {
       <ToastContainer />
       <Switch>
         <Route exact path='/' component={Home} />
-        <Route path='/login' component={Login} />
-        <Route path='/signup' component={Signup} />
+        <Route exact path='/login' component={Login} />
+        <Route exact path='/signup' component={Signup} />
+        <Route exact path='/signup/complete' component={SignupComplete} />
       </Switch>
     </>
   );
