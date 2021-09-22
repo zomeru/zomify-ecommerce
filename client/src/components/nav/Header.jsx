@@ -47,7 +47,7 @@ const Header = () => {
       <SubMenu key='SubMenu' icon={<SettingOutlined />} title='Username'>
         <Item key='setting:1'>Option 1</Item>
         <Item key='setting:2'>Option 2</Item>
-        <Item icon={<LogoutOutlined />} key='setting:2' onClick={handleLogout}>
+        <Item icon={<LogoutOutlined />} onClick={handleLogout}>
           Logout
         </Item>
       </SubMenu>

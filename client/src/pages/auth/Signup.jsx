@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { auth } from '../../firebase';
 import { toast } from 'react-toastify';
+import { Button } from 'antd';
 
 const Signup = () => {
   const [email, setEmail] = useState('');
@@ -31,11 +32,15 @@ const Signup = () => {
         className='mb-2 form-control'
         value={email}
         onChange={e => setEmail(e.target.value)}
+        placeholder='Your email'
         autoFocus
       />
-      <button type='submit' className=' btn btn-outline-primary'>
+      {/* <button type='submit' className=' btn btn-outline-primary'>
         Sign up
-      </button>
+      </button> */}
+      <Button type='submit' block shape='round' size='large'>
+        Sign up
+      </Button>
     </form>
   );
 
