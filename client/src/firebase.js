@@ -1,4 +1,4 @@
-import * as firebase from 'firebase';
+import firebase from 'firebase';
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_API_KEY,
@@ -10,7 +10,7 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
 
 export const auth = firebase.auth();
-export const googleAuthProvider = new firebase.auth.googleAuthProvider();
+export const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
