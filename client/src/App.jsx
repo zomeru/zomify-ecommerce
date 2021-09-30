@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import Login from './pages/auth/Login';
 import Signup from './pages/auth/Signup';
 import Home from './pages/Home';
 import Header from './components/nav/Header';
 import SignupComplete from './pages/auth/SignupComplete';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import ForgotPassword from './pages/auth/ForgotPassword';
 
 import { auth } from './firebase.js';
 import { useDispatch } from 'react-redux';
@@ -42,6 +44,7 @@ const App = () => {
         <Route exact path='/login' component={Login} />
         <Route exact path='/signup' component={Signup} />
         <Route exact path='/signup/complete' component={SignupComplete} />
+        <Route exact path='/forgot/password' component={ForgotPassword} />
       </Switch>
     </>
   );
