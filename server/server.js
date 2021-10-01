@@ -15,7 +15,7 @@ const app = express();
 
 // db
 mongoose
-  .connect(process.env.DATABASE)
+  .connect(process.env.DB)
   .then(() => console.log('DB CONNECTION SUCCESSFUl'))
   .catch(error => console.log('DB CONNECTION ERROR', error));
 

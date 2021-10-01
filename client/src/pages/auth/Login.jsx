@@ -7,13 +7,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-const createOrUpdateUser = async authToken => {
+const createOrUpdateUser = async authtoken => {
   return await axios.post(
     `${import.meta.env.VITE_API_ENDPOINT}/create-or-update-user`,
     {},
     {
       headers: {
-        authToken,
+        authtoken,
       },
     }
   );
@@ -44,7 +44,7 @@ const Login = ({ history }) => {
       const idTokenResult = await user.getIdTokenResult();
 
       createOrUpdateUser(idTokenResult.token)
-        .then(res => console.log('CREATE OR UPDATE RESPONSE'))
+        .then(res => console.log('CREATE OR UPDATE RESPONSE', res))
         .catch(error => console.log(error.message));
 
       // dispatch({
