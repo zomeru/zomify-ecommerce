@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "antd": "^4.16.13",
+    "axios": "^0.21.4",
     "bootstrap": "^5.1.1",
     "firebase": "8.2.3",
     "react": "^17.0.0",
