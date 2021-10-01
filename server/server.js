@@ -4,6 +4,7 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const { readdirSync } = require('fs');
 
 dotenv.config({
   path: './.env.local',
@@ -23,13 +24,8 @@ app.use(morgan('dev'));
 app.use(bodyParser.json({ limit: '2mb' }));
 app.use(cors());
 
-// route
-app.get('/api', (req, res) => {
-  //
-  res.json({
-    data: 'Sample Data',
-  });
-});
+// routes middleware
+readdirSync('./routes').map(r => app.use('/api', require('./routes/' + r)));
 
 // port
 const port = process.env.PORT || 8000;
