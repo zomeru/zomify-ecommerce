@@ -5,19 +5,7 @@ import { Button } from 'antd';
 import { MailOutlined, GoogleOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
-
-const createOrUpdateUser = async authtoken => {
-  return await axios.post(
-    `${import.meta.env.VITE_API_ENDPOINT}/create-or-update-user`,
-    {},
-    {
-      headers: {
-        authtoken,
-      },
-    }
-  );
-};
+import { createOrUpdateUser } from '../../utils/auth';
 
 const Login = ({ history }) => {
   const [email, setEmail] = useState('zomerzxc.19@gmail.com');
@@ -44,17 +32,21 @@ const Login = ({ history }) => {
       const idTokenResult = await user.getIdTokenResult();
 
       createOrUpdateUser(idTokenResult.token)
-        .then(res => console.log('CREATE OR UPDATE RESPONSE', res))
+        .then(res => {
+          dispatch({
+            type: 'LOGGED_IN_USER',
+            payload: {
+              name: res.data.name,
+              email: res.data.email,
+              token: idTokenResult.token,
+              role: res.data.role,
+              _id: res.data._id,
+            },
+          });
+        })
         .catch(error => console.log(error.message));
 
-      // dispatch({
-      //   type: 'LOGGED_IN_USER',
-      //   payload: {
-      //     email: user.email,
-      //     token: idTokenResult.token,
-      //   },
-      // });
-      // history.push('/');
+      history.push('/');
     } catch (error) {
       console.log(error);
       toast.error(error.message);
@@ -69,13 +61,20 @@ const Login = ({ history }) => {
         const { user } = result;
         const idTokenResult = await user.getIdTokenResult();
 
-        dispatch({
-          type: 'LOGGED_IN_USER',
-          payload: {
-            email: user.email,
-            token: idTokenResult.token,
-          },
-        });
+        createOrUpdateUser(idTokenResult.token)
+          .then(res => {
+            dispatch({
+              type: 'LOGGED_IN_USER',
+              payload: {
+                name: res.data.name,
+                email: res.data.email,
+                token: idTokenResult.token,
+                role: res.data.role,
+                _id: res.data._id,
+              },
+            });
+          })
+          .catch(error => console.log(error.message));
         history.push('/');
       })
       .catch(error => {

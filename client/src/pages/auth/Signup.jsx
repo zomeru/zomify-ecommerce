@@ -44,12 +44,9 @@ const Signup = ({ history }) => {
         placeholder='Your email'
         autoFocus
       />
-      {/* <button type='submit' className=' btn btn-outline-primary'>
+      <button type='submit' className=' btn btn-outline-primary'>
         Sign up
-      </button> */}
-      <Button type='submit' block shape='round' size='large'>
-        Sign up
-      </Button>
+      </button>
     </form>
   );
 
