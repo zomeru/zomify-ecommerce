@@ -23,3 +23,15 @@ export const currentUser = async authtoken => {
     }
   );
 };
+
+export const currentAdmin = async authtoken => {
+  return await axios.post(
+    `${import.meta.env.VITE_API_ENDPOINT}/current-admin`,
+    {},
+    {
+      headers: {
+        authtoken,
+      },
+    }
+  );
+};

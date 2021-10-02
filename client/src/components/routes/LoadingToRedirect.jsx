@@ -19,7 +19,6 @@ const LoadingToRedirect = () => {
 
   return (
     <div className='container p-5 text-center'>
-      <p>You are not logged in.</p>
       <p>Redirecting you in {count} seconds.</p>
     </div>
   );
