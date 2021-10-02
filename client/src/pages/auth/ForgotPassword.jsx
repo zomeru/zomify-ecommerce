@@ -13,7 +13,7 @@ const ForgotPassword = ({ history }) => {
     if (user && user.token) {
       history.push('/');
     }
-  }, [user]);
+  }, [user, history]);
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -39,7 +39,7 @@ const ForgotPassword = ({ history }) => {
   };
 
   return (
-    <div className='container col-md-6 offset-md-3 p-5'>
+    <div className='container p-5 col-md-6 offset-md-3'>
       {loading ? (
         <h4 className='text-danger'>Loading...</h4>
       ) : (
