@@ -7,6 +7,8 @@ import {
   getCategories,
   removeCategory,
 } from '../../../utils/category';
+import { Link } from 'react-router-dom';
+import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
 
 const CategoryCreate = () => {
   const [name, setName] = useState('');
@@ -29,11 +31,30 @@ const CategoryCreate = () => {
         setLoading(false);
         setName('');
         toast.success(`"${res.data.name}" is created.`);
+        loadCategories();
       })
       .catch(error => {
         setLoading(false);
         if (error.response.status === 400) toast.error(error.response.data);
       });
+  };
+
+  const handleRemove = async slug => {
+    if (window.confirm('Are you sure you want to delete?')) {
+      setLoading(true);
+      removeCategory(slug, user.token)
+        .then(res => {
+          setLoading(false);
+          toast.error(`${res.data.name} deleted.`);
+          loadCategories();
+        })
+        .catch(error => {
+          if (error.response.status === 400) {
+            setLoading(false);
+            toast.error(error.response.data);
+          }
+        });
+    }
   };
 
   const categoryForm = () => (
@@ -67,6 +88,23 @@ const CategoryCreate = () => {
             <h4>Create category</h4>
           )}
           {categoryForm()}
+          <hr />
+          {categories.map(c => (
+            <div className='alert alert-secondary' key={c._id}>
+              {c.name}
+              <span
+                onClick={() => handleRemove(c.slug)}
+                className='btn btn-sm float-end'
+              >
+                <DeleteOutlined className='text-danger' />
+              </span>
+              <Link to={`/admin/category/${c.slug}`}>
+                <span className='btn btn-sm float-end'>
+                  <EditOutlined className='text-warning' />
+                </span>
+              </Link>
+            </div>
+          ))}
         </div>
       </div>
     </div>
