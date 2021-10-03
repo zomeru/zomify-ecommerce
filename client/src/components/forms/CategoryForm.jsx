@@ -13,8 +13,7 @@ const CategoryForm = ({ handleSubmit, name, setName }) => {
           autoFocus
           required
         />
-        <br />
-        <button className='btn btn-outline-primary'>Save</button>
+        <button className='btn btn-outline-primary mt-2'>Save</button>
       </div>
     </form>
   );
