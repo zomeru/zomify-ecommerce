@@ -9,6 +9,7 @@ import {
 } from '../../../utils/category';
 import { Link } from 'react-router-dom';
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
+import CategoryForm from '../../../components/forms/CategoryForm';
 
 const CategoryCreate = () => {
   const [name, setName] = useState('');
@@ -87,7 +88,11 @@ const CategoryCreate = () => {
           ) : (
             <h4>Create category</h4>
           )}
-          {categoryForm()}
+          <CategoryForm
+            handleSubmit={handleSubmit}
+            name={name}
+            setName={setName}
+          />
           <hr />
           {categories.map(c => (
             <div className='alert alert-secondary' key={c._id}>
