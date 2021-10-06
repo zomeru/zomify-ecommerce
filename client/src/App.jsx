@@ -17,6 +17,7 @@ import Wishlist from './pages/user/Wishlist';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import CategoryCreate from './pages/admin/category/CategoryCreate';
 import CategoryUpdate from './pages/admin/category/CategoryUpdate';
+import SubcategoryCreate from './pages/admin/subcategory/SubcategoryCreate';
 
 import { auth } from './firebase.js';
 import { useDispatch } from 'react-redux';
@@ -71,6 +72,11 @@ const App = () => {
           exact
           path='/admin/category/:slug'
           component={CategoryUpdate}
+        />
+        <AdminRoute
+          exact
+          path='/admin/subcategory'
+          component={SubcategoryCreate}
         />
       </Switch>
     </>
